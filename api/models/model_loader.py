@@ -1,11 +1,15 @@
-from . import orders, order_details, recipes, sandwiches, resources
+from . import customers, menu_items, orders, order_items, payments, promotions, staff, reviews
+from ..dependencies.database import Base, engine
 
-from ..dependencies.database import engine
+from api.models.customers import Customer
+from api.models.menu_items import MenuItem
+from api.models.orders import Order
+from api.models.order_items import OrderItem
+from api.models.payments import Payment
+from api.models.promotions import Promotion
+from api.models.staff import Staff
+from api.models.reviews import Review
 
 
 def index():
-    orders.Base.metadata.create_all(engine)
-    order_details.Base.metadata.create_all(engine)
-    recipes.Base.metadata.create_all(engine)
-    sandwiches.Base.metadata.create_all(engine)
-    resources.Base.metadata.create_all(engine)
+    Base.metadata.create_all(bind=engine)
